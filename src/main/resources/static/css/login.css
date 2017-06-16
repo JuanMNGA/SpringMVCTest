@@ -6,9 +6,8 @@
 .form-signin {
   max-width: 420px;
   padding: 30px 38px 66px;
-  margin: 0 auto;
-  background-color: #eee;
-  border: 3px dotted rgba(0,0,0,0.1);  
+  margin: 13% auto;
+  background-color: #eee; 
   }
 
 .form-signin-heading {
@@ -35,3 +34,16 @@ input[type="password"] {
   border-top-right-radius: 0;
 }
 
+.btn-registro {
+	color: white;
+	text-color: black;
+}
+
+.btn-registro:hover{
+	color: grey;
+}
+
+.login-cont{
+	background-image: url("../images/comic-fondo.jpg");
+	
+}

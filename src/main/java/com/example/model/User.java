@@ -26,27 +26,37 @@ public class User {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "user_id")
 	private int id;
+	
 	@Column(name = "email")
-	@Email(message = "*Please provide a valid Email")
-	@NotEmpty(message = "*Please provide an email")
+	@Email(message = "Por favor, introduce un e-mail valido")
+	@NotEmpty(message = "Introduzca un email")
 	private String email;
+	
 	@Column(name = "password")
-	@Length(min = 5, message = "*Your password must have at least 5 characters")
-	@NotEmpty(message = "*Please provide your password")
+	@Length(min = 5, message = "Su contraseña debe tener al menos 5 caracteres")
+	@NotEmpty(message = "Introduzca su contraseña")
 	@Transient
 	private String password;
+	
 	@Column(name = "name")
-	@NotEmpty(message = "*Please provide your name")
+	@NotEmpty(message = "Introduzca su nombre")
 	private String name;
+	
 	@Column(name = "last_name")
-	@NotEmpty(message = "*Please provide your last name")
-	private String lastName;
+	@NotEmpty(message = "Introduzca sus apellidos")
+	private String last_name;
+	
 	@Column(name = "active")
 	private int active;
+	
 	@ManyToMany(cascade = CascadeType.ALL)
-	@JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
+	@JoinTable(name = "user_role")
 	private Set<Role> roles;
 
+	@ManyToMany(cascade = CascadeType.ALL)
+	@JoinTable(name = "user_channel")
+	private Set<Channel> channels;
+	
 	public int getId() {
 		return id;
 	}
@@ -72,11 +82,11 @@ public class User {
 	}
 
 	public String getLastName() {
-		return lastName;
+		return last_name;
 	}
 
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
+	public void setLastName(String last_name) {
+		this.last_name = last_name;
 	}
 
 	public String getEmail() {
@@ -101,6 +111,14 @@ public class User {
 
 	public void setRoles(Set<Role> roles) {
 		this.roles = roles;
+	}
+
+	public Set<Channel> getChannels() {
+		return channels;
+	}
+
+	public void setChannels(Set<Channel> channels) {
+		this.channels = channels;
 	}
 
 }
